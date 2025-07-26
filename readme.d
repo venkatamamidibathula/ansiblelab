@@ -3,7 +3,6 @@
 Both the master and worker nodes are docker containers and it will help kickstart your ansible journey without much hassle.
 
 Define your playbook in ansible roles and run the below commands first time in sequence order.
-
 **Worker nodes should be up first**
 
 - docker-compose up -d worker-node1
@@ -13,8 +12,7 @@ Define your playbook in ansible roles and run the below commands first time in s
 - docker-compose build ansible-master
 - docker-compose run ansible-master
 
-
-
+Always ensure before building and running master , the worker node containers are up and running without which ansible-master will not start.
 
 **Note** : This is for home lab setup on any linux machine.
 
