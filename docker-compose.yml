@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  ansible-master:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ansible-master
+      #volumes:
+      #- ./ansible:/ansible
+    networks:
+      - ansible-network
+    depends_on:
+      - worker-node1
+      - worker-node2
+
+  worker-node1:
+    image: ubuntu:20.04
+    container_name: worker-node1
+    hostname: worker-node1
+    networks:
+      - ansible-network
+    environment:
+      - DEBIAN_FRONTEND=noninteractive
+    command: >
+      bash -c "apt-get update && apt-get install -y openssh-server && mkdir -p /var/run/sshd && echo 'root:password' | chpasswd && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && service ssh start && sleep infinity"
+
+  worker-node2:
+    image: ubuntu:20.04
+    container_name: worker-node2
+    hostname: worker-node2
+    networks:
+      - ansible-network
+    environment:
+      - DEBIAN_FRONTEND=noninteractive
+    command: >
+      bash -c "apt-get update && apt-get install -y openssh-server && mkdir -p /var/run/sshd && echo 'root:password' | chpasswd && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && service ssh start && sleep infinity"
+
+networks:
+  ansible-network:
+    driver: bridge

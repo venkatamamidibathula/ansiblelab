@@ -1,0 +1,22 @@
+---
+# Main tasks for the role
+- name: This task is to create a message
+  debug:
+    msg:
+      - "Mahellan"
+      - "Bihnas"
+      - "Molsof"
+
+- name: This task is to download the Go version and install on my machine
+  get_url:
+    url: https://go.dev/dla/
+    dest: /tmp
+  ignore_errors: yes
+
+- name: This task is to download Python version from the internet
+  get_url:
+    url: https://www.python.org/downloads/release/python-3120/
+    dest: /tmp
+
+# Include the .NET installation tasks
+- include_tasks: dotnet_install.yml

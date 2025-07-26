@@ -1,0 +1,17 @@
+---
+# Define variables
+vars:
+  x: 10
+  y: 20
+  z: 90
+  place: "Vijayawada"
+
+# Debug task to compare values
+- name: This role is for comparison
+  debug:
+    msg: |
+      x == y : {{ x == y }}
+      x != y : {{ x != y }}
+      x > y : {{ x > y }}
+      x < y : {{ x < y }}
+      'w' in place : {{ 'w' in place }}

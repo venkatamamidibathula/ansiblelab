@@ -1,0 +1,12 @@
+---
+- name: set the fact large
+  set_fact:
+    large: "{{ a if a>b else b }}"
+- name: Display variables
+  debug:
+    msg:
+      - "Value of a is {{ a }}"
+      - "Value of b is {{ b }}"
+      - "Value of large is {{ large }}"
+
+      

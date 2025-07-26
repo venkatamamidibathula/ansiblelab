@@ -1,0 +1,11 @@
+---
+- name: This task is for set fact
+  set_fact:
+    x: 8
+    y: "Ansible Playbooks"
+- name: Debug message
+  debug:
+    msg:
+      - "Value of x is {{ x }}"
+      - "Value of y is {{ y }}"
+

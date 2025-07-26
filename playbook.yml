@@ -1,0 +1,5 @@
+---
+- name: Execute Sample Playbooks
+  hosts: worker_nodes
+  roles:
+    - blockrescue

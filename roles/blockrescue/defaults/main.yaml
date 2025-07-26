@@ -1,0 +1,5 @@
+---
+# Default variables for the role
+dotnet_download_url: https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-7.0.401-windows-x64-installer
+python_download_url: https://www.python.org/downloads/release/python-3120/
+go_download_url: https://go.dev/dla/

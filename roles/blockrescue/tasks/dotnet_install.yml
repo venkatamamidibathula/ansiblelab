@@ -1,0 +1,19 @@
+---
+# Tasks for .NET installation
+- name: This task is for grouping all related tasks for .NET installation in the playbook
+  block:
+    - name: This task is to download .NET
+      get_url:
+        url: https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-7.0.401-windows-x64-installer
+        dest: /tmp
+      register: outputofdotnetdownload
+
+    - name: This task is for displaying the message of .NET output
+      debug:
+        msg: "The value of output is {{ outputofdotnetdownload }}"
+  rescue:
+    - name: This is the rescue block
+      debug:
+        msg:
+          - "The block module failed"
+          - "The output of block module is {{ outputofdotnetdownload }}"
